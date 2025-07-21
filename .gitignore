@@ -1,0 +1,19 @@
+# Ignore backup files
+*.bak
+*.backup
+*.sql~
+*.tmp
+
+# Ignore DB dumps that are not final
+*.dump
+*.log
+*.err
+
+# Ignore editor/IDE files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Optional: ignore screenshots if you don’t want them tracked
+screenshots/

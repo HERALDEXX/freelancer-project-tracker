@@ -1,0 +1,74 @@
+Title: Freelancer Project Tracker
+
+Scenario:
+I'm building a MySQL database called `freelancer_db` to help freelancers track their clients, projects, and payments. The goal is to organize information about which clients the freelancer is working with, details about each project (budgets, deadlines, descriptions), and whether payments have been made. This helps freelancers monitor work progress and manage income effectively.
+
+---
+
+Sample SELECT Queries and Their Output:
+
+1. Query: List all upcoming projects (due after today), sorted by deadline.
+```sql
+SELECT title, deadline, status
+FROM Projects
+WHERE deadline > CURDATE()
+ORDER BY deadline ASC;
+```
+
+Sample Output:
+| title                     | deadline    | status      |
+|---------------------------|-------------|-------------|
+| Landing Page Redesign     | 2025-07-25  | In Progress |
+| Educational Blog Setup    | 2025-07-30  | Completed   |
+| Mobile App UI Design      | 2025-08-01  | Completed   |
+| API Integration Task      | 2025-08-02  | Pending     |
+| Portfolio Website         | 2025-08-05  | Completed   |
+| Event Registration System | 2025-08-10  | In Progress |
+| E-Commerce Website        | 2025-08-15  | In Progress |
+| Resume Builder Tool       | 2025-08-18  | In Progress |
+| Company Dashboard         | 2025-08-20  | Pending     |
+| AI Chatbot Integration    | 2025-09-10  | Pending     |
+
+---
+
+2. Query: Count how many projects each client has.
+```sql
+SELECT c.name, COUNT(p.project_id) AS project_count
+FROM Clients c
+LEFT JOIN Projects p ON c.client_id = p.client_id
+GROUP BY c.client_id;
+```
+
+Sample Output:
+| name           | project_count |
+|----------------|---------------|
+| Ada Lovelace   | 1             |
+| Chidi Nwosu    | 1             |
+| Fatima Khan    | 1             |
+| John Smith     | 1             |
+| Maria Garcia   | 1             |
+| Zainab Bello   | 1             |
+| Liam Chen      | 1             |
+| Olivia Brown   | 1             |
+| Adewale James  | 1             |
+| Emma Rossi     | 1             |
+
+---
+
+3. Query: Show total payments received grouped by payment method.
+```sql
+SELECT method, SUM(amount) AS total_received
+FROM Payments
+GROUP BY method;
+```
+
+Sample Output:
+| method         | total_received |
+|----------------|----------------|
+| Bank Transfer  | 1200.00        |
+| PayPal         | 1150.00        |
+| Crypto         | 1200.00        |
+
+---
+
+Note: Outputs are based on the sample data from `freelancer_db.sql` and reflect values as of the time of insertion.

@@ -67,3 +67,18 @@ window.addEventListener("DOMContentLoaded", () => {
 
   fadeElems.forEach((el) => observer.observe(el));
 });
+
+// Cursor trail logic
+window.addEventListener("DOMContentLoaded", () => {
+  const dot = document.createElement("div");
+  dot.classList.add("cursor-dot");
+  document.body.appendChild(dot);
+
+  document.addEventListener("mousemove", (e) => {
+    dot.style.top = `${e.clientY}px`;
+    dot.style.left = `${e.clientX}px`;
+  });
+});
+
+// Auto-update copyright year
+document.getElementById("year").textContent = new Date().getFullYear();

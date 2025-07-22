@@ -1,4 +1,4 @@
-// Theme toggling
+// Toggle between light and dark themes
 function toggleTheme() {
   const body = document.body;
   const current = body.getAttribute("data-theme") || "dark";
@@ -8,48 +8,51 @@ function toggleTheme() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  const saved = localStorage.getItem("theme");
-  document.body.setAttribute("data-theme", saved || "dark");
+  // Force dark theme as default
+  const saved = localStorage.getItem("theme") || "dark";
+  document.body.setAttribute("data-theme", saved);
 
-  // Typewriter effect
-  const words = [
+  // ⌨️ Typewriter effect
+  const phrases = [
     "A project tracker.",
     "But elegant.",
     "Built for freelancers.",
     "Engineered for clarity.",
   ];
+  const typeTarget = document.getElementById("typewriter");
   let i = 0,
     j = 0,
-    current = "",
-    isDeleting = false,
-    speed = 100;
-  const typeTarget = document.getElementById("typewriter");
+    isDeleting = false;
 
   function type() {
-    if (!typeTarget) return;
-    current = words[i];
+    const current = phrases[i];
     if (isDeleting) {
-      typeTarget.innerHTML = current.substring(0, j--);
+      j--;
     } else {
-      typeTarget.innerHTML = current.substring(0, j++);
+      j++;
     }
+
+    typeTarget.textContent = current.substring(0, j);
+
+    let speed = isDeleting ? 50 : 100;
 
     if (!isDeleting && j === current.length + 1) {
       isDeleting = true;
-      speed = 1000;
+      speed = 800;
     } else if (isDeleting && j === 0) {
       isDeleting = false;
-      i = (i + 1) % words.length;
-      speed = 200;
-    } else {
-      speed = isDeleting ? 60 : 100;
+      i = (i + 1) % phrases.length;
+      speed = 300;
     }
+
     setTimeout(type, speed);
   }
 
-  type();
+  if (typeTarget) {
+    setTimeout(type, 300); // slight delay so layout is stable
+  }
 
-  // Fade-in scroll animations
+  // 👀 Scroll fade-ins
   const fadeElems = document.querySelectorAll(".fade-scroll");
   const observer = new IntersectionObserver(
     (entries) => {

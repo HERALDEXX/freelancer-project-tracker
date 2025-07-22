@@ -29,9 +29,14 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
+.typewriter-wrapper {
+  /* Reserve space so page doesn’t shift */
+  min-height: 1.4em;
+  margin-bottom: 1.5rem;
+}
+
 .tagline {
   font-size: 1.1rem;
-  margin-bottom: 1.5rem;
 }
 
 main.glass-card {
@@ -73,7 +78,10 @@ main.glass-card {
 }
 
 a.cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   background: var(--accent);
   color: white;
   font-weight: 600;
@@ -86,6 +94,9 @@ a.cta {
 a.cta:hover {
   filter: brightness(1.1);
   box-shadow: 0 0 15px var(--accent);
+}
+.github-icon {
+  fill: white;
 }
 
 footer {

@@ -1,47 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Freelancer Project Tracker</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet"/>
-</head>
-<body>
-  <div class="blobs">
-    <div class="blob pink"></div>
-    <div class="blob blue"></div>
-    <div class="blob purple"></div>
-  </div>
-
-  <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
-
-  <main class="glass-card fade-scroll">
-    <h1>💼 Freelancer Project Tracker</h1>
-    <p class="tagline" id="typewriter">Loading...</p>
-
-    <div class="badges fade-scroll">
-      <img src="https://img.shields.io/badge/Database-MySQL-blue?logo=mysql&style=flat-square" alt="MySQL">
-      <img src="https://img.shields.io/badge/Git-orange?logo=git&style=flat-square" alt="Git">
-      <img src="https://img.shields.io/badge/GitHub-181717?logo=github&style=flat-square" alt="GitHub">
-      <img src="https://img.shields.io/badge/Docs-Markdown-lightgrey?logo=markdown&style=flat-square" alt="Markdown">
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Freelancer Project Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="blobs">
+      <div class="blob pink"></div>
+      <div class="blob blue"></div>
+      <div class="blob purple"></div>
     </div>
 
-    <section class="features fade-scroll">
-      <div class="feature">📇 Manage client contact and company info</div>
-      <div class="feature">📁 Track projects with deadlines and budgets</div>
-      <div class="feature">💰 Log payments and methods per project</div>
-      <div class="feature">📊 Run custom SQL queries with real insights</div>
-      <div class="feature">🧩 Import easily into any MySQL environment</div>
-    </section>
+    <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
 
-    <a class="cta fade-scroll" href="https://github.com/HERALDEXX/freelancer-project-tracker" target="_blank">🔗 View on GitHub</a>
+    <main class="glass-card fade-scroll">
+      <h1>💼 Freelancer Project Tracker</h1>
+      <!-- Wrap the typewriter in a fixed-height container -->
+      <div class="typewriter-wrapper">
+        <p class="tagline" id="typewriter">Loading...</p>
+      </div>
 
-    <footer class="fade-scroll">
-      MIT Licensed • © 2025 <a href="https://github.com/HERALDEXX" target="_blank">Herald Inyang</a>
-    </footer>
-  </main>
+      <div class="badges fade-scroll">
+        <img
+          src="https://img.shields.io/badge/Database-MySQL-blue?logo=mysql&style=flat-square"
+          alt="MySQL"
+        />
+        <img
+          src="https://img.shields.io/badge/Git-orange?logo=git&style=flat-square"
+          alt="Git"
+        />
+        <img
+          src="https://img.shields.io/badge/GitHub-181717?logo=github&style=flat-square"
+          alt="GitHub"
+        />
+        <img
+          src="https://img.shields.io/badge/Docs-Markdown-lightgrey?logo=markdown&style=flat-square"
+          alt="Markdown"
+        />
+      </div>
 
-  <script src="script.js"></script>
-</body>
+      <section class="features fade-scroll">
+        <div class="feature">📇 Manage client contact and company info</div>
+        <div class="feature">📁 Track projects with deadlines and budgets</div>
+        <div class="feature">💰 Log payments and methods per project</div>
+        <div class="feature">📊 Run custom SQL queries with real insights</div>
+        <div class="feature">🧩 Import easily into any MySQL environment</div>
+      </section>
+
+      <a
+        class="cta fade-scroll"
+        href="https://github.com/HERALDEXX/freelancer-project-tracker"
+        target="_blank"
+      >
+        <!-- Inline GitHub icon SVG -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="github-icon"
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          fill="currentColor"
+        >
+          <path
+            d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1 1.5.7 1.9 1.1.1-.9.4-1.5.7-1.9-2.6-.3-5.3-1.3-5.3-5.7 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3 .1.8-.2 1.7-.3 2.6-.3s1.8.1 2.6.3c2.1-.4 3-.1 3-.1.6 1.6.2 2.8.1 3.1.7.8 1.1 1.7 1.1 2.9 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5z"
+          />
+        </svg>
+        View project on GitHub
+      </a>
+
+      <footer class="fade-scroll">
+        MIT Licensed • © 2025
+        <!-- Styled GitHub badge link -->
+        <a href="https://github.com/HERALDEXX" target="_blank">
+          <img
+            src="https://img.shields.io/badge/GitHub-HERALDEXX-181717?style=flat-square&logo=github"
+            alt="Herald Inyang on GitHub"
+          />
+        </a>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
 </html>

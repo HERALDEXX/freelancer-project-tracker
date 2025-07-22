@@ -1,0 +1,190 @@
+:root {
+  --bg: #0f0f1a;
+  --text: #ffffff;
+  --glass: rgba(255, 255, 255, 0.05);
+  --blur: 12px;
+  --accent: #4ea1ff;
+}
+
+body[data-theme="light"] {
+  --bg: #f4f4f4;
+  --text: #111;
+  --glass: rgba(255, 255, 255, 0.85);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  min-height: 100vh;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+main.glass-card {
+  max-width: 850px;
+  margin: 10vh auto;
+  background: var(--glass);
+  padding: 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(var(--blur));
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  animation: fadeInUp 1.5s ease both;
+}
+
+.badges img {
+  margin: 5px;
+}
+
+.features {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.feature {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  backdrop-filter: blur(4px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.feature:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+a.cta {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  transition: 0.3s ease;
+}
+a.cta:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 15px var(--accent);
+}
+
+footer {
+  margin-top: 2.5rem;
+  font-size: 0.9rem;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  z-index: 100;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+}
+
+.blobs {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.2;
+  filter: blur(90px);
+  mix-blend-mode: screen;
+  animation: float 12s ease-in-out infinite;
+}
+
+.blob.pink {
+  background: #ff4ecd;
+  width: 300px;
+  height: 300px;
+  top: -100px;
+  left: -80px;
+  animation-delay: 0s;
+  animation-duration: 10s;
+}
+
+.blob.blue {
+  background: #007bff;
+  width: 250px;
+  height: 250px;
+  bottom: -80px;
+  right: -60px;
+  animation-delay: 2s;
+  animation-duration: 14s;
+}
+
+.blob.purple {
+  background: #7928ca;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 1s;
+  animation-duration: 12s;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -52%) scale(1.05);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

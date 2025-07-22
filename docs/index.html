@@ -1,126 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Freelancer Project Tracker</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono&display=swap"
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
     />
     <style>
       :root {
-            --bg: #f9f9f9;
-                  --text: #111;
-                        --card: #fff;
-                              --accent: #007bff;
-                                    --badge-bg: #e5e5e5;
-                                          --badge-text: #333;
-                                              }
-                                                  [data-theme="dark"] {
-                                                        --bg: #111;
-                                                              --text: #eee;
-                                                                    --card: #1e1e1e;
-                                                                          --accent: #4ea1ff;
-                                                                                --badge-bg: #333;
-                                                                                      --badge-text: #ccc;
-                                                                                          }
+        --bg: #f9f9f9;
+        --text: #1a1a1a;
+        --card: #ffffff;
+        --accent: #007bff;
+        --button-bg: #007bff;
+        --button-hover: #005fcc;
+        --badge-bg: #e0e0e0;
+        --badge-text: #333;
+        --mono: 'JetBrains Mono', monospace;
+      }
 
-                                                                                              * {
-                                                                                                    margin: 0;
-                                                                                                          padding: 0;
-                                                                                                                box-sizing: border-box;
-                                                                                                                    }
+      [data-theme="dark"] {
+        --bg: #0d1117;
+        --text: #e6edf3;
+        --card: #161b22;
+        --accent: #58a6ff;
+        --button-bg: #238636;
+        --button-hover: #2ea043;
+        --badge-bg: #30363d;
+        --badge-text: #ccc;
+      }
 
-                                                                                                                        html, body {
-                                                                                                                              font-family: 'Inter', sans-serif;
-                                                                                                                                    background: var(--bg);
-                                                                                                                                          color: var(--text);
-                                                                                                                                                line-height: 1.6;
-                                                                                                                                                      padding: 2rem;
-                                                                                                                                                            transition: background 0.3s, color 0.3s;
-                                                                                                                                                                }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-                                                                                                                                                                    .container {
-                                                                                                                                                                          max-width: 800px;
-                                                                                                                                                                                margin: auto;
-                                                                                                                                                                                      background: var(--card);
-                                                                                                                                                                                            padding: 2rem;
-                                                                                                                                                                                                  border-radius: 12px;
-                                                                                                                                                                                                        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-                                                                                                                                                                                                            }
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        padding: 2rem;
+        position: relative;
+        overflow-x: hidden;
+      }
 
-                                                                                                                                                                                                                h1 {
-                                                                                                                                                                                                                      font-size: 2rem;
-                                                                                                                                                                                                                            margin-bottom: 0.5rem;
-                                                                                                                                                                                                                                }
+      .blob {
+        position: absolute;
+        z-index: 0;
+        filter: blur(70px);
+        opacity: 0.2;
+      }
 
-                                                                                                                                                                                                                                    p.tagline {
-                                                                                                                                                                                                                                          font-size: 1.1rem;
-                                                                                                                                                                                                                                                color: var(--text);
-                                                                                                                                                                                                                                                      margin-bottom: 1.5rem;
-                                                                                                                                                                                                                                                          }
+      .blob1 {
+        top: -100px;
+        left: -80px;
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(130deg, #007bff, #00d4ff);
+        border-radius: 50%;
+      }
 
-                                                                                                                                                                                                                                                              .badges img {
-                                                                                                                                                                                                                                                                    margin-right: 6px;
-                                                                                                                                                                                                                                                                          margin-bottom: 10px;
-                                                                                                                                                                                                                                                                              }
+      .blob2 {
+        bottom: -120px;
+        right: -100px;
+        width: 250px;
+        height: 250px;
+        background: linear-gradient(130deg, #ff0080, #7928ca);
+        border-radius: 50%;
+      }
 
-                                                                                                                                                                                                                                                                                  ul.features {
-                                                                                                                                                                                                                                                                                        margin: 1rem 0;
-                                                                                                                                                                                                                                                                                              padding-left: 1.2rem;
-                                                                                                                                                                                                                                                                                                  }
+      .container {
+        position: relative;
+        z-index: 1;
+        max-width: 850px;
+        margin: auto;
+        background: var(--card);
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
+      }
 
-                                                                                                                                                                                                                                                                                                      ul.features li::marker {
-                                                                                                                                                                                                                                                                                                            color: var(--accent);
-                                                                                                                                                                                                                                                                                                                }
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
 
-                                                                                                                                                                                                                                                                                                                    a.button {
-                                                                                                                                                                                                                                                                                                                          display: inline-block;
-                                                                                                                                                                                                                                                                                                                                background: var(--accent);
-                                                                                                                                                                                                                                                                                                                                      color: white;
-                                                                                                                                                                                                                                                                                                                                            padding: 0.75rem 1.25rem;
-                                                                                                                                                                                                                                                                                                                                                  border-radius: 6px;
-                                                                                                                                                                                                                                                                                                                                                        text-decoration: none;
-                                                                                                                                                                                                                                                                                                                                                              font-weight: 600;
-                                                                                                                                                                                                                                                                                                                                                                    margin-top: 1rem;
-                                                                                                                                                                                                                                                                                                                                                                          transition: background 0.2s ease;
-                                                                                                                                                                                                                                                                                                                                                                              }
+      .tagline {
+        font-size: 1.15rem;
+        margin-bottom: 1.5rem;
+      }
 
-                                                                                                                                                                                                                                                                                                                                                                                  a.button:hover {
-                                                                                                                                                                                                                                                                                                                                                                                        background: #005fcc;
-                                                                                                                                                                                                                                                                                                                                                                                            }
+      .badges img {
+        margin: 5px 10px 10px 0;
+      }
 
-                                                                                                                                                                                                                                                                                                                                                                                                footer {
-                                                                                                                                                                                                                                                                                                                                                                                                      text-align: center;
-                                                                                                                                                                                                                                                                                                                                                                                                            margin-top: 3rem;
-                                                                                                                                                                                                                                                                                                                                                                                                                  font-size: 0.9rem;
-                                                                                                                                                                                                                                                                                                                                                                                                                        color: var(--badge-text);
-                                                                                                                                                                                                                                                                                                                                                                                                                            }
+      .features {
+        display: grid;
+        gap: 1rem;
+        margin: 2rem 0;
+      }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                .theme-toggle {
-                                                                                                                                                                                                                                                                                                                                                                                                                                      position: fixed;
-                                                                                                                                                                                                                                                                                                                                                                                                                                            top: 20px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                  right: 20px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        background: var(--badge-bg);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                              color: var(--badge-text);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    border: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                          padding: 0.4rem 0.7rem;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                border-radius: 6px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      cursor: pointer;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            font-size: 0.8rem;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+      .feature-card {
+        background: var(--bg);
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: inset 0 0 0 1px var(--badge-bg);
+        transition: 0.2s ease;
+      }
+
+      .feature-card:hover {
+        box-shadow: inset 0 0 0 2px var(--accent);
+      }
+
+      .feature-card span {
+        font-size: 1.25rem;
+        margin-right: 0.5rem;
+      }
+
+      a.button {
+        display: inline-block;
+        background: var(--button-bg);
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: 1rem;
+        transition: background 0.3s ease;
+      }
+
+      a.button:hover {
+        background: var(--button-hover);
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 3rem;
+        font-size: 0.9rem;
+        color: var(--badge-text);
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--badge-bg);
+        color: var(--badge-text);
+        border: none;
+        padding: 0.5rem 0.9rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 1.5rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .tagline {
+          font-size: 1rem;
+        }
+
+        .feature-card {
+          font-size: 0.95rem;
+        }
+      }
     </style>
   </head>
   <body>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
     <button class="theme-toggle" onclick="toggleTheme()">🌓 Toggle</button>
 
     <div class="container">
-      <h1>Freelancer Project Tracker</h1>
+      <h1>💼 Freelancer Project Tracker</h1>
       <p class="tagline">
-        A MySQL-based system to manage freelance clients, projects, and payment
-        records — clean, efficient, and real-world ready.
+        A MySQL-based system to help freelancers track clients, projects, and
+        payment records — all in one place.
       </p>
 
       <div class="badges">
@@ -138,26 +205,33 @@
         />
         <img
           src="https://img.shields.io/badge/Docs-Markdown-lightgrey?logo=markdown&style=flat-square"
-          alt="Docs"
+          alt="Markdown Docs"
         />
       </div>
 
-      <h3>What it does</h3>
-      <ul class="features">
-        <li>📇 Stores client contact and company info</li>
-        <li>📁 Tracks projects per client with deadlines and budgets</li>
-        <li>💰 Logs payment records and methods</li>
-        <li>
-          📊 Supports useful queries like total payments, project count, etc.
-        </li>
-        <li>🔌 Easy to import and run in any MySQL setup</li>
-      </ul>
+      <div class="features">
+        <div class="feature-card">
+          <span>📇</span> Manage client contact and company details
+        </div>
+        <div class="feature-card">
+          <span>📁</span> Link projects with deadlines and budgets
+        </div>
+        <div class="feature-card">
+          <span>💰</span> Log payments with amounts and methods
+        </div>
+        <div class="feature-card">
+          <span>🔍</span> Run useful SQL queries like totals and grouping
+        </div>
+        <div class="feature-card">
+          <span>🧩</span> Easy to import and explore with MySQL
+        </div>
+      </div>
 
       <a
         class="button"
         href="https://github.com/HERALDEXX/freelancer-project-tracker"
         target="_blank"
-        >🔗 View Project on GitHub</a
+        >🔗 View on GitHub</a
       >
 
       <footer>
@@ -175,16 +249,14 @@
 
     <script>
       function toggleTheme() {
-        const isDark =
-          document.documentElement.getAttribute("data-theme") === "dark";
-        document.documentElement.setAttribute(
-          "data-theme",
-          isDark ? "light" : "dark"
-        );
-        localStorage.setItem("theme", isDark ? "light" : "dark");
+        const html = document.documentElement;
+        const current = html.getAttribute("data-theme");
+        const next = current === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
       }
 
-      // Load saved theme
+      // On load
       const saved = localStorage.getItem("theme");
       if (saved) document.documentElement.setAttribute("data-theme", saved);
     </script>
